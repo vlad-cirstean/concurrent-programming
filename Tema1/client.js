@@ -10,11 +10,11 @@ const udpClient = udp.createSocket('udp4');
 const times = 10000 * 5;
 const address = 'localhost';
 
-const pkgSize = 8192; // 8kb
+const pkgSize = 81920; // 8kb
 const buff = Buffer.alloc(pkgSize);
 
 const tcpOpts = {
-  times: 6252,
+  times: 62520,
   pkgSize: 65515,
   buff: Buffer.alloc(6551)
 };
@@ -47,7 +47,8 @@ function tcpTest() {
 function tcpWaitTest() {
   tcpClient.connect(tcpPort, address, async () => {
     console.log('TCP Start');
-    tcpClient.setNoDelay(true)
+    tcpClient.setNoDelay(true);
+    tcpClient.setKeepAlive(true);
     tcpClient.write('wait');
 
     await sleep(500);
@@ -55,6 +56,8 @@ function tcpWaitTest() {
 
     while (count < tcpOpts.times) {
       await sleep(1);
+
+      console.log(count);
 
       if (tcpAck > 0) {
         tcpAck -= 1;

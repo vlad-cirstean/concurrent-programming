@@ -18,10 +18,14 @@ const server = net.createServer(async (socket) => {
   tcpSize = 0;
   tcpCount = 0;
   tcpManual = false;
+  socket.setKeepAlive(true);
+  socket.setNoDelay(false);
+
   const start = Date.now();
   socket.on('data', (chunk) => {
     if (chunk.toString() === 'wait') {
       tcpManual = true;
+      socket.setNoDelay(true);
     }
     tcpCount++;
     tcpSize += chunk.length;
