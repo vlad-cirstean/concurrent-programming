@@ -30,7 +30,7 @@ const server = net.createServer(async (socket) => {
     tcpCount++;
     tcpSize += chunk.length;
     if (tcpManual) {
-      socket.write('ack');
+      socket.write('ack', (err)=>console.log(err));
     }
   });
 
