@@ -2,15 +2,22 @@
 
 ### tcp
 
-works properly Received: 6252 Size: 409600000 Time: 0.332s
+Received: 6252 Size: 409600000 Time: 0.332s 8k
+Received: 6252 Size: 409599780 Time: 0.313s 
 
-### udpWait with 10ms delay
+### tcpWait
 
-Received: 50000 Size: 409600000 Time: 5.783s
+Received: 50001 Size: 409600004 Time: 65.642s 8k
+Received: 6253 Size: 40956856 Time: 9.651s
+
+
+### udpWait
+
+Received: 50000 Size: 409600000 Time: 92.244s
 
 ### udp
 
-Received: 45871 Size: 375775232 Time: 5.174s
+Received: 49999 Size: 409591808 Time: 5.159s
 
 ## remote machine (Oregon)
 
@@ -37,7 +44,6 @@ Received: 2743 Size: 22470656 Time: 1.006s
 Received: 13904 Size: 113901568 Time: 0.569s
 
 13900 packets received (13900 + 36100 = 50000 all)
-36100 packet receive errors
-50000 packets sent (all)
+36100 packet receive errors 50000 packets sent (all)
 36100 receive buffer errors
 
